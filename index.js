@@ -18,6 +18,10 @@ app.post('/employees', (req, res) => {
         return res.status(400).json({ error: 'Name and position are required' });
     }
 
+    if (employees.find(emp => emp.name === req.body.name)) {
+        return res.status(400).json({ error: 'Employee already exists' });
+    }
+
     const employee = {
         id: employees.length + 1,
         name: req.body.name,
