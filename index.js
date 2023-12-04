@@ -8,6 +8,17 @@ const employees = [
     { id: 3, name: 'Mike Johnson', position: 'Designer' },
 ];
 
+// POST route to add an employee
+app.post('/employees', (req, res) => {
+    const employee = {
+        id: employees.length + 1,
+        name: req.body.name,
+        position: req.body.position,
+    };
+    employees.push(employee);
+    res.json(employee);
+});
+
 // GET route to filter employees by ID
 app.get('/employees/:id', (req, res) => {
     const id = parseInt(req.params.id);
