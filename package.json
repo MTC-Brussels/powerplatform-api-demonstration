@@ -1,0 +1,12 @@
+{
+  "name": "powerplatform-demonstration-api",
+  "version": "1.0.0",
+  "description": "A demonstration API that shows how to turn an API into a custom connector",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "author": "Dries Augustyns",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
