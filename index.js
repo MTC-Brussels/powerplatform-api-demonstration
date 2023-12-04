@@ -1,5 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
+
+app.use(bodyParser.json());
 
 // Array of employee data
 const employees = [
@@ -10,6 +14,10 @@ const employees = [
 
 // POST route to add an employee
 app.post('/employees', (req, res) => {
+    if (!req.body.name || !req.body.position) {
+        return res.status(400).json({ error: 'Name and position are required' });
+    }
+
     const employee = {
         id: employees.length + 1,
         name: req.body.name,
