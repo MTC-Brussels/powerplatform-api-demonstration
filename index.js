@@ -20,6 +20,11 @@ app.get('/employees/:id', (req, res) => {
     }
 });
 
+// GET route to return all employees
+app.get('/employees', (req, res) => {
+    res.json(employees);
+});
+
 // Start the server
 app.listen(8080, () => {
     console.log('Server is running on port 8080');
