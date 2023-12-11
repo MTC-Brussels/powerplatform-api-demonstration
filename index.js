@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+// Add body-parser to parse JSON in the request
 app.use(bodyParser.json());
 
 // Array of employee data
@@ -49,6 +50,8 @@ app.get('/employees', (req, res) => {
 });
 
 // Start the server
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
     console.log('Server is running on port 8080');
 });
+
+module.exports = {app, server}
