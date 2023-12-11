@@ -1,7 +1,7 @@
 const request = require('supertest')
 const {app, server} = require('../index')
 
-describe('Post Endpoints', () => {
+describe('HTTP POST Endpoints', () => {
     afterAll((done) => {
         server.close()
         done()
