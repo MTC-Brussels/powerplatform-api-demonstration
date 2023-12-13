@@ -50,6 +50,26 @@ app.get('/employees', (req, res) => {
   res.json(employees);
 });
 
+// PUT route to update an employee
+app.put('/employees/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const employee = employees.find((emp) => emp.id === id);
+
+  if (!employee) {
+    return res.status(404).json({ error: 'Employee not found' });
+  }
+
+  if (req.body.name) {
+    employee.name = req.body.name;
+  }
+
+  if (req.body.position) {
+    employee.position = req.body.position;
+  }
+
+  res.json(employee);
+});
+
 // Start the server
 const server = app.listen(8080, () => {
   console.log('Server is running on port 8080');
