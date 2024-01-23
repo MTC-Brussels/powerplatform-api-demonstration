@@ -70,9 +70,18 @@ app.put('/employees/:id', (req, res) => {
   res.json(employee);
 });
 
-// Start the server
-const server = app.listen(8080, () => {
-  console.log('Server is running on port 8080');
-});
+try {
+  // Start the server
+  const server = app.listen(8080, () => {
+    console.log('Server is running on port 8080');
+  });
 
-module.exports = { app, server };
+  module.exports = { app, server };
+} catch (e) {
+  // If the error is a port conflict, log it and exit the process
+  if (e.code === 'EADDRINUSE') {
+    console.log('Port 8080 is already in use');
+  } else {
+    process.exit(1);
+  }
+}
