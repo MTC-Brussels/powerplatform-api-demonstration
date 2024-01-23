@@ -70,6 +70,19 @@ app.put('/employees/:id', (req, res) => {
   res.json(employee);
 });
 
+// DELETE route to delete an employee
+app.delete('/employees/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = employees.findIndex((emp) => emp.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ error: 'Employee not found' });
+  }
+
+  employees.splice(index, 1);
+  res.sendStatus(204);
+});
+
 // Start the server
 const server = app.listen(8080, () => {
   console.log('Server is running on port 8080');
