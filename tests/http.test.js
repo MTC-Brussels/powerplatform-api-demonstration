@@ -39,4 +39,27 @@ describe('HTTP Endpoints', () => {
     // If the employee was created successfully, the response should contain the new employee's ID
     expect(res.body).toHaveProperty('id');
   });
+
+  it('should update an employee', async () => {
+    const res = await request(app).put('/employees/1').send({
+      name: 'Dries Augustyns',
+      position: 'Technical Architect',
+    });
+
+    // The result should return a 200 status code
+    expect(res.statusCode).toEqual(200);
+
+    // If the employee was updated successfully, the response should contain the updated employee's ID
+    expect(res.body).toHaveProperty('id');
+  });
+
+  it('should delete an employee', async () => {
+    const res = await request(app).delete('/employees/1');
+
+    // The result should return a 200 status code
+    expect(res.statusCode).toEqual(200);
+
+    // If the employee was deleted successfully, the response should contain the deleted employee's ID
+    expect(res.body).toHaveProperty('id');
+  });
 });
